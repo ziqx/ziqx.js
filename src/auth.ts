@@ -20,7 +20,8 @@ export class ZiqxAuth {
           return true;
         }
       } catch (error) {
-        throw new Error("🔐Validation Failed: (Check Network)");
+        console.error("🔐 Validation failed: ", error);
+        return false;
       }
     }
     return false;
