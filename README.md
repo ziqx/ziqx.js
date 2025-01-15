@@ -14,7 +14,10 @@ const auth = new ZiqxAuth();
 auth.login("APP_ID"); // Acquire app ID from Ziqx Developer Console
 // If you are testing in developer mode, add second param as "true"
 
-//Validate Ziqx Token
-const isTokenValid:boolean = await auth.validate("TOKEN");
+// Validate Ziqx Token by Signature (Promise)
+const isValidAuth:boolean = await auth.strictValidate("TOKEN");
+
+// Check if token is valid (Won't verify signature)
+const isTokenValid:boolean = auth.isTokenValid("TOKEN");
 
 ```
