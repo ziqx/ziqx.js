@@ -99,7 +99,7 @@ export class ZiqxStorage {
       const command = new PutObjectCommand(params);
       const data = await this.client.send(command);
       return data;
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error putting object:", error);
       throw new Error(
         `Failed to put object ${params.Key} in bucket ${params.Bucket}: ${error.message}`
@@ -133,7 +133,7 @@ export class ZiqxStorage {
       };
 
       return enhancedData;
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error getting object:", error);
       throw new Error(
         `Failed to get object ${params.Key} from bucket ${params.Bucket}: ${error.message}`
@@ -153,7 +153,7 @@ export class ZiqxStorage {
       const command = new DeleteObjectCommand(params);
       const data = await this.client.send(command);
       return data;
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error deleting object:", error);
       throw new Error(
         `Failed to delete object ${params.Key} from bucket ${params.Bucket}: ${error.message}`
@@ -173,7 +173,7 @@ export class ZiqxStorage {
       const command = new ListObjectsV2Command(params);
       const data = await this.client.send(command);
       return data;
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error listing objects:", error);
       throw new Error(
         `Failed to list objects in bucket ${params.Bucket}: ${error.message}`
@@ -197,7 +197,7 @@ export class ZiqxStorage {
       const command = new PutObjectCommand({ Bucket: bucket, Key: key });
       const url = await getSignedUrl(this.client, command, { expiresIn });
       return url;
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error getting signed URL for PUT:", error);
       throw new Error(`Failed to get signed URL for PUT: ${error.message}`);
     }
@@ -219,7 +219,7 @@ export class ZiqxStorage {
       const command = new GetObjectCommand({ Bucket: bucket, Key: key });
       const url = await getSignedUrl(this.client, command, { expiresIn });
       return url;
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error getting signed URL for GET:", error);
       throw new Error(`Failed to get signed URL for GET: ${error.message}`);
     }
