@@ -53,7 +53,7 @@ export class ZiqxAuth {
     return false;
   }
 
-  static isTokenValid(token: string): boolean {
+  public isTokenValid(token: string): boolean {
     if (!token) return false;
 
     const parts = token.split(".");
